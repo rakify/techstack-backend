@@ -1,8 +1,8 @@
-import 'dotenv/config'
+import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-const folderRoute =  require("./routes/folders");
+const folderRoute = require("./routes/folders");
 const app = express();
 
 //connect to db
@@ -19,15 +19,13 @@ mongoose
 //we should use them before routes
 app.use(
   cors({
-    origin: "http://localhost:3000"
-    },
-  )
+    origin: "https://techstack.onrender.com",
+  })
 );
 app.use(express.json());
 
 //routes
 app.use("/api/folders", folderRoute);
-
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
