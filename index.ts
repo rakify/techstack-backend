@@ -1,8 +1,8 @@
 import "dotenv/config";
-import express from "express";
+import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-const folderRoute = require("./routes/folders");
+import folderRoute from "./src/routes/folders";
 const app = express();
 
 //connect to db
@@ -25,6 +25,9 @@ app.use(
 app.use(express.json());
 
 //routes
+app.get("/", async (req: Request, res: Response) => {
+  res.send("Vercel is working");
+});
 app.use("/api/folders", folderRoute);
 
 const PORT = process.env.PORT || 4000;
